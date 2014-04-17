@@ -1,0 +1,3 @@
+---
+- name: set start of mysql daemon after launch of the machine
+  service: name=mysqld state=started enabled=yes

@@ -1,0 +1,24 @@
+---
+- name: create user of graphite
+  user: name=graphite password=graphite
+
+- name: create directory for graphite on /opt
+  file: state=directory path=/opt/graphite owner=graphite group=graphite mode=0755
+
+- name: install packages of python for the graphite
+  pip: name={{ item }} state=latest executable=pip2.6
+  with_items:
+    - graphite-web
+    - carbon
+    - whisper
+    - django
+    - django-tagging
+    - uwsgi
+    - simplejson
+    - mysql-python
+
+- name: rename files of carbon 
+  shell: cp /opt/graphite/conf/{{ item }}.conf.example /opt/graphite/conf/{{ item }}.conf
+  with_items:
+    - carbon
+    - storage-schemas

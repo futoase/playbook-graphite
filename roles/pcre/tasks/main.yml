@@ -1,0 +1,6 @@
+---
+- name: install pcre for graphite
+  yum: name={{ item }} state=latest
+  with_items:
+    - pcre
+    - pcre-devel

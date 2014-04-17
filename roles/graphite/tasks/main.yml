@@ -1,0 +1,6 @@
+---
+- include: install.yml
+- include: update_files.yml
+- include: setup_db.yml
+- include: change_owner_of_files.yml
+- include: change_names_of_module.yml

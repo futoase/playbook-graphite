@@ -1,0 +1,11 @@
+---
+- name: install the python development tools  for python 2.6
+  yum: name={{ item }} state=latest
+  with_items:
+    - python-devel
+
+- name: install the easy_install
+  command: su -c "wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python"
+
+- name: install the pip
+  easy_install: name=pip executable=easy_install-2.6

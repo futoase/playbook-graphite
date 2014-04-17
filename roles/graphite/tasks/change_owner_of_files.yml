@@ -1,0 +1,4 @@
+---
+- name: change user of files and directory on /opt/graphite from root to graphite
+  shell: chown -R graphite:graphite . chdir=/opt/graphite
+

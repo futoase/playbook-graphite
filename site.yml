@@ -1,0 +1,12 @@
+---
+- hosts: all
+  sudo: yes
+  roles:
+    - common
+    - pcre
+    - cairo
+    - python
+    - mysql
+    - nginx
+    - graphite
+    - supervisor

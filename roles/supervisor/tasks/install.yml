@@ -1,0 +1,12 @@
+---
+- name: install the supervisor from pip
+  pip: name=supervisor state=latest executable=pip2.6
+
+- name: mkdir for supervisord
+  file: state=directory path={{ item }} owner=root group=root mode=0755
+  with_items:
+    - /var/log/supervisord
+
+- name: copy supervisord.conf on the machine
+  copy: src=supervisord.conf dest=/etc/supervisord.conf owner=root group=root
+

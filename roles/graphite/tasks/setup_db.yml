@@ -1,0 +1,9 @@
+---
+- name: setup mysqldb for graphite
+  command: mysql -u root -e 'CREATE DATABASE IF NOT EXISTS graphite;'
+
+- name: setup user on mysql for graphite
+  command: mysql -u root -e "GRANT ALL PRIVILEGES ON graphite.* TO 'graphite'@'localhost' IDENTIFIED BY 'graphite';"
+
+- name: setup db for graphite
+  command: python manage.py syncdb --noinput chdir=/opt/graphite/webapp/graphite

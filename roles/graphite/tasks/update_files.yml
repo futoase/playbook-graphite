@@ -1,0 +1,3 @@
+---
+- name: update to local_settings.py
+  template: src=local_settings.py dest=/opt/graphite/webapp/graphite/local_settings.py mode=0644 owner=root group=root
