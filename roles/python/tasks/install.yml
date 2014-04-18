@@ -4,8 +4,14 @@
   with_items:
     - python-devel
 
+- name: instaled the easy_install?
+  command: which easy_install-2.6
+  register: installed_the_easy_install
+  ignore_errors: True
+
 - name: install the easy_install
   command: su -c "wget https://bitbucket.org/pypa/setuptools/raw/bootstrap/ez_setup.py -O - | python"
+  when: installed_the_easy_install|failed
 
 - name: install the pip
   easy_install: name=pip executable=easy_install-2.6
